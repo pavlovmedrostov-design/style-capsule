@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Style Capsule — персональный AI-стилист для мужских капсул одежды." />
+  <title>Style Capsule — персональный стилист</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="enhancements.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <aside class="sidebar">
+    <a class="brand" href="#top" aria-label="Style Capsule">
+      <span class="brand-mark">SC</span>
+      <span>style capsule</span>
+    </a>
+    <nav>
+      <a class="nav-link active" href="#capsules"><span>◫</span> Мои капсулы</a>
+      <a class="nav-link" href="#stylist"><span>✦</span> AI-стилист</a>
+      <a class="nav-link" href="#profile"><span>◎</span> Профиль и размеры</a>
+      <a class="nav-link" href="#favorites"><span>♡</span> Избранное <b id="favCount">3</b></a>
+    </nav>
+    <div class="sidebar-card">
+      <span class="pulse"></span>
+      <strong>Профиль готов на 35%</strong>
+      <p>Добавьте фото и замеры — точность подбора станет выше.</p>
+      <button class="text-button" data-open-profile>Заполнить профиль →</button>
+    </div>
+    <p class="privacy">⌁ Фото и параметры видны только вам</p>
+  </aside>
+
+  <main id="top">
+    <header class="topbar">
+      <div class="mobile-brand">SC</div>
+      <div class="season-switch" aria-label="Сезон">
+        <button class="season active" data-season="all">Все</button>
+        <button class="season" data-season="summer">Лето</button>
+        <button class="season" data-season="autumn">Осень</button>
+        <button class="season" data-season="winter">Зима</button>
+      </div>
+      <div class="store-switch" aria-label="Где искать одежду">
+        <span>Магазин</span>
+        <div>
+          <button class="store-option" data-store="lamoda">Lamoda</button>
+          <button class="store-option" data-store="henderson">Henderson</button>
+          <button class="store-option active" data-store="both">Оба</button>
+        </div>
+      </div>
+      <button class="cart-pill" id="cartButton">Корзина <span id="cartCount">0</span></button>
+      <div class="avatar-mini" aria-label="Профиль">А</div>
+    </header>
+
+    <section class="hero" id="stylist">
+      <div class="eyebrow">Ваш персональный гардероб</div>
+      <h1>Образ, который говорит<br><em>за вас</em></h1>
+      <p>Подберу капсулы под вашу внешность, образ жизни и точные параметры. Вам останется только выбрать.</p>
+      <form class="command-bar" id="commandForm">
+        <span class="spark">✦</span>
+        <input id="commandInput" aria-label="Команда стилисту" placeholder="Например: собери лёгкую капсулу для отпуска у моря" />
+        <button type="submit" aria-label="Отправить">↗</button>
+      </form>
+      <div class="quick-prompts">
+        <button data-prompt="Нужна летняя капсула для города">Лето в городе</button>
+        <button data-prompt="Собери smart casual для офиса">Smart casual</button>
+        <button data-prompt="Подбери одежду для зимней поездки">Зимняя поездка</button>
+      </div>
+    </section>
+
+    <section class="onboarding" id="profile">
+      <div class="profile-visual">
+        <div class="upload-stage" id="uploadStage">
+          <img id="userPhoto" alt="Ваше фото" />
+          <div class="silhouette" id="silhouette"><span></span></div>
+          <div class="photo-counter" id="photoCounter">0 / 5 фото</div>
+          <label class="upload-button" for="photoInput">＋ Добавить фотографии</label>
+          <input id="photoInput" type="file" accept="image/*" multiple hidden />
+        </div>
+        <div class="photo-tray" id="photoTray"><span>Здесь появятся ваши ракурсы</span></div>
+        <div class="photo-note"><b>Лучший результат</b><br>Фото в полный рост, ровный свет, простой фон</div>
+      </div>
+      <div class="profile-copy">
+        <div class="step-label">Шаг 1 из 2</div>
+        <h2>Давайте познакомимся</h2>
+        <p>Я учту пропорции, цветотип и особенности фигуры. Фото нужно только для персонального подбора и визуальной примерки.</p>
+        <div class="checklist">
+          <div id="photoCheck"><i>1</i><span><b>Загрузите 3–5 фотографий</b><small>Анфас, профиль, со спины и портрет</small></span><em id="photoStatus">0 из 5</em></div>
+          <button data-open-profile><i>2</i><span><b>Добавьте точные замеры</b><small>Покажу, как правильно измерить</small></span><em>Начать →</em></button>
+          <button data-open-profile><i>3</i><span><b>Расскажите о предпочтениях</b><small>Стиль, цвета, бюджет, сценарии</small></span><em>Добавить →</em></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="capsule-section" id="capsules">
+      <div class="section-heading">
+        <div><span class="eyebrow">Подборка стилиста · <b id="activeStoreLabel">Lamoda + Henderson</b></span><h2>Ваши капсулы</h2></div>
+        <p>Каждая вещь сочетается с остальными.<br>Цены и наличие уточняются перед покупкой.</p>
+      </div>
+      <div class="capsule-grid" id="capsuleGrid"></div>
+    </section>
+
+    <section class="how-it-works">
+      <div><span>01</span><h3>Вы рассказываете о себе</h3><p>Фото, параметры, любимые цвета и задачи.</p></div>
+      <div><span>02</span><h3>Стилист собирает капсулы</h3><p>Только совместимые вещи и подходящие размеры.</p></div>
+      <div><span>03</span><h3>Вы примеряете и правите</h3><p>Меняйте одну вещь или весь характер образа.</p></div>
+      <div><span>04</span><h3>Покупаете уверенно</h3><p>Проверяйте наличие и переходите к товару.</p></div>
+    </section>
+
+    <footer><span>STYLE CAPSULE</span><p>Демонстрационный прототип персонального стилиста. Не является официальным сервисом Lamoda или HENDERSON.</p></footer>
+  </main>
+
+  <dialog id="profileDialog">
+    <form method="dialog" class="modal-shell" id="profileForm">
+      <button class="close" value="cancel" aria-label="Закрыть">×</button>
+      <span class="eyebrow">Профиль фигуры</span>
+      <h2>Точные замеры — точная посадка</h2>
+      <p class="modal-intro">Измеряйте по телу гибким метром, не затягивая его. Стойте прямо и дышите спокойно.</p>
+      <div class="measure-layout">
+        <div class="measure-visual">
+          <div class="measure-title"><b>Смотрите на линии</b><span>Метр идёт горизонтально вокруг тела</span></div>
+          <svg class="body-map" viewBox="0 0 400 520" role="img" aria-label="Схема замеров мужской фигуры спереди и сбоку">
+            <defs><linearGradient id="skin" x1="0" x2="1"><stop stop-color="#657064"/><stop offset="1" stop-color="#899486"/></linearGradient></defs>
+            <text x="93" y="24" class="map-caption">СПЕРЕДИ</text><text x="292" y="24" class="map-caption">СБОКУ</text>
+            <circle cx="125" cy="73" r="35" fill="url(#skin)"/><path d="M93 108 Q73 132 69 188 L84 292 L101 290 L99 470 L121 470 L127 297 L134 297 L142 470 L164 470 L168 290 L185 292 L181 188 Q177 132 157 108 Q126 124 93 108Z" fill="url(#skin)"/>
+            <circle cx="305" cy="73" r="35" fill="url(#skin)"/><path d="M292 108 Q270 135 277 205 L286 286 L292 470 L314 470 L316 297 L325 470 L347 470 L336 278 L339 184 Q335 127 320 108Z" fill="url(#skin)"/>
+            <path d="M76 167 Q125 146 178 167" class="measure-ring chest-ring"/><path d="M278 167 Q306 154 337 168" class="measure-ring chest-ring"/>
+            <path d="M84 220 Q126 205 171 220" class="measure-ring waist-ring"/><path d="M282 220 Q307 211 338 221" class="measure-ring waist-ring"/>
+            <path d="M90 267 Q126 251 165 267" class="measure-ring hips-ring"/><path d="M286 267 Q310 254 337 268" class="measure-ring hips-ring"/>
+            <path d="M132 293 L132 468" class="measure-ring inseam-ring"/><circle cx="132" cy="294" r="5" class="inseam-dot"/>
+            <g class="map-label"><rect x="10" y="142" width="94" height="28" rx="14"/><text x="57" y="160">1  ГРУДЬ</text></g>
+            <g class="map-label"><rect x="10" y="197" width="94" height="28" rx="14"/><text x="57" y="215">2  ТАЛИЯ</text></g>
+            <g class="map-label"><rect x="10" y="247" width="94" height="28" rx="14"/><text x="57" y="265">3  БЁДРА</text></g>
+            <g class="map-label"><rect x="142" y="378" width="118" height="28" rx="14"/><text x="201" y="396">4  ШАГОВЫЙ ШОВ</text></g>
+          </svg>
+          <div class="measure-legend">
+            <div><b>1. Грудь</b><span>Через лопатки и самые выступающие точки груди, строго параллельно полу.</span></div>
+            <div><b>2. Талия</b><span>В самом узком месте корпуса, обычно чуть выше пупка. Живот не втягивать.</span></div>
+            <div><b>3. Бёдра</b><span>Вокруг самой широкой части ягодиц. Ноги вместе, метр не провисает.</span></div>
+            <div class="inseam-help"><b>4. Шаговый шов</b><span>Это длина ноги изнутри: от точки соединения ног в паху вниз до пола. Лучше измерить по брюкам, которые хорошо сидят.</span></div>
+          </div>
+        </div>
+        <div class="measure-fields">
+          <label>Рост <span><input name="height" type="number" placeholder="182"> см</span><small>Босиком, от пола до макушки</small></label>
+          <label>Вес <span><input name="weight" type="number" placeholder="78"> кг</span></label>
+          <label>Обхват груди <span><input name="chest" type="number" placeholder="102"> см</span><small>По самым выступающим точкам</small></label>
+          <label>Обхват талии <span><input name="waist" type="number" placeholder="88"> см</span><small>В самом узком месте, без втягивания живота</small></label>
+          <label>Обхват бёдер <span><input name="hips" type="number" placeholder="100"> см</span></label>
+          <label>Шаговый шов <span><input name="inseam" type="number" placeholder="82"> см</span><small>По внутренней стороне ноги: от паха до пола</small></label>
+          <label class="wide">Пожелания<textarea name="wishes" placeholder="Люблю спокойные цвета, не ношу узкие брюки, бюджет до 80 000 ₽…"></textarea></label>
+        </div>
+      </div>
+      <button class="primary wide-button" value="default" id="saveProfile">Сохранить параметры</button>
+    </form>
+  </dialog>
+
+  <dialog id="capsuleDialog"><div class="modal-shell capsule-modal"><button class="capsule-close" data-close-capsule aria-label="Закрыть капсулу"><span>×</span> Закрыть</button><div id="capsuleDetails"></div></div></dialog>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true"><button class="close-drawer" id="closeCart">×</button><span class="eyebrow">Ваш выбор</span><h2>Корзина</h2><div id="cartItems"></div><div class="cart-total"><span>Итого</span><b id="cartTotal">0 ₽</b></div><button class="primary" id="checkout">Перейти к товарам на Lamoda ↗</button><p>Перед переходом мы ещё раз проверим размер, цену и наличие.</p></aside>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
